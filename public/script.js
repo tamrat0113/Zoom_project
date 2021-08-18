@@ -13,7 +13,7 @@ const myVideo = document.createElement('video')
 myVideo.muted = true;
 navigator.mediaDevices.getUserMedia({
     video: true,
-    audio: false
+    audio: true
 }).then(stream => {
     myVideoStream = stream;
     addVideoStream(myVideo, stream)
@@ -36,8 +36,6 @@ navigator.mediaDevices.getUserMedia({
     
 
     // socket.on('user-connected', (userId)=> {
-    //     connectToNewUser(userId,stream);
-    //   })
 })
       let text = $("input");
       // when press enter send message
@@ -105,7 +103,7 @@ const scrollToBottom = () => {
   
   
   const muteUnmute = () => {
-    const enabled = myVideoStream.getAudioTracks()[0].enabled;
+    let enabled = myVideoStream.getAudioTracks()[0].enabled;
     if (enabled) {
       myVideoStream.getAudioTracks()[0].enabled = false;
       setUnmuteButton();
